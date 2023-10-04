@@ -1,7 +1,11 @@
 import { Monster } from '../../models/interfaces/monster.interface';
 import {
   BattleMonsterCard,
+  BattleMonsterStatTitle,
   BattleMonsterTitle,
+  Image,
+  ProgressBar,
+  Underline,
 } from './MonsterBattleCard.styled';
 
 type MonsterCardProps = {
@@ -11,16 +15,25 @@ type MonsterCardProps = {
 
 const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
   return (
-    <BattleMonsterCard centralized>
-      <BattleMonsterTitle>{monster?.name}</BattleMonsterTitle>
+    <BattleMonsterCard>
       {monster && (
-        <div>
-          <p>Attack: {monster.attack}</p>
-          <p>Defense: {monster.defense}</p>
-          <p>HP: {monster.hp}</p>
-          <p>Speed: {monster.speed}</p>
-          <p>Type: {monster.type}</p>
-        </div>
+        <>
+          <Image src={monster?.imageUrl} />
+          <BattleMonsterTitle>{monster?.name}</BattleMonsterTitle>
+          <Underline></Underline>
+
+          <BattleMonsterStatTitle>HP</BattleMonsterStatTitle>
+          <ProgressBar variant="determinate" value={monster.hp} />
+
+          <BattleMonsterStatTitle>Attack</BattleMonsterStatTitle>
+          <ProgressBar variant="determinate" value={monster.attack} />
+
+          <BattleMonsterStatTitle>Defense</BattleMonsterStatTitle>
+          <ProgressBar variant="determinate" value={monster.defense} />
+
+          <BattleMonsterStatTitle>Speed</BattleMonsterStatTitle>
+          <ProgressBar variant="determinate" value={monster.speed} />
+        </>
       )}
     </BattleMonsterCard>
   );
