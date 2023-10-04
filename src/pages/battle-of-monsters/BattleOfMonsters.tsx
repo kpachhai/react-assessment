@@ -59,14 +59,20 @@ const BattleOfMonsters = () => {
       <MonstersList monsters={monsters} />
       {winner && <WinnerDisplay text={winner.name} />}
       <BattleSection>
-        <MonsterBattleCard monster={selectedMonster} title="Player" />
+        <MonsterBattleCard
+          monster={selectedMonster}
+          titleTestId="player-monster-name"
+        />
         <StartBattleButton
           data-testid="start-battle-button"
           disabled={selectedMonster === null}
           onClick={handleStartBattleClick}>
           Start Battle
         </StartBattleButton>
-        <MonsterBattleCard monster={computerMonster} title="Computer" />
+        <MonsterBattleCard
+          monster={computerMonster}
+          titleTestId="computer-monster-name"
+        />
       </BattleSection>
     </PageContainer>
   );

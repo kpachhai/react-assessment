@@ -10,29 +10,51 @@ import {
 
 type MonsterCardProps = {
   monster?: Monster | null;
-  title?: string;
+  titleTestId?: string;
 };
 
-const MonsterBattleCard: React.FC<MonsterCardProps> = ({ monster, title }) => {
+const MonsterBattleCard: React.FC<MonsterCardProps> = ({
+  monster,
+  titleTestId,
+}) => {
   return (
     <BattleMonsterCard>
       {monster && (
         <>
           <Image src={monster?.imageUrl} />
-          <BattleMonsterTitle>{monster?.name}</BattleMonsterTitle>
+          <BattleMonsterTitle data-testid={titleTestId}>
+            {monster?.name}
+          </BattleMonsterTitle>
+
           <Underline></Underline>
 
           <BattleMonsterStatTitle>HP</BattleMonsterStatTitle>
-          <ProgressBar variant="determinate" value={monster.hp} />
+          <ProgressBar
+            aria-label="HP progress"
+            variant="determinate"
+            value={monster.hp}
+          />
 
           <BattleMonsterStatTitle>Attack</BattleMonsterStatTitle>
-          <ProgressBar variant="determinate" value={monster.attack} />
+          <ProgressBar
+            aria-label="Attack progress"
+            variant="determinate"
+            value={monster.attack}
+          />
 
           <BattleMonsterStatTitle>Defense</BattleMonsterStatTitle>
-          <ProgressBar variant="determinate" value={monster.defense} />
+          <ProgressBar
+            aria-label="Defense progress"
+            variant="determinate"
+            value={monster.defense}
+          />
 
           <BattleMonsterStatTitle>Speed</BattleMonsterStatTitle>
-          <ProgressBar variant="determinate" value={monster.speed} />
+          <ProgressBar
+            aria-label="Speed progress"
+            variant="determinate"
+            value={monster.speed}
+          />
         </>
       )}
     </BattleMonsterCard>
