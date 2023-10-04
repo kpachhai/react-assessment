@@ -57,6 +57,7 @@ const BattleOfMonsters = () => {
     <PageContainer>
       <Title>Battle of Monsters</Title>
       <MonstersList monsters={monsters} />
+      {winner && <WinnerDisplay text={winner.name} />}
       <BattleSection>
         <MonsterBattleCard monster={selectedMonster} title="Player" />
         <StartBattleButton
@@ -67,7 +68,6 @@ const BattleOfMonsters = () => {
         </StartBattleButton>
         <MonsterBattleCard monster={computerMonster} title="Computer" />
       </BattleSection>
-      {winner && <WinnerDisplay text={winner.name} />}
     </PageContainer>
   );
 };
